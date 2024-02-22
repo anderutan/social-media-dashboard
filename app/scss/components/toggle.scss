@@ -1,10 +1,28 @@
 @use '../util/' as *;
 
 .toggle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   border: none;
+
+  label {
+    &[for='dark'] {
+      grid-column: 1/2;
+    }
+    &[for='system'] {
+      grid-column: 2/3;
+      grid-row: 2/3;
+    }
+    &[for='light'] {
+      grid-column: 3/4;
+    }
+  }
 
   &__wrapper {
     height: rem(24);
+    grid-column: 2/3;
+    grid-row: 1/2;
+    position: relative;
   }
 
   input[type='radio'] {
@@ -14,6 +32,9 @@
   &__background {
     display: block;
     height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
     border-radius: rem(12);
     background: linear-gradient(
       225deg,
@@ -27,8 +48,5 @@
     height: rem(16);
     border-radius: 50%;
     background-color: var(-toggle);
-  }
-
-  label {
   }
 }
