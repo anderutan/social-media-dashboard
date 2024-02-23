@@ -1,9 +1,22 @@
 @use '../util/' as *;
 
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(30);
+  @include breakpoint(medium) {
+    grid-template-columns: repeat(2, 1fr);
+    flex-direction: row;
+  }
+
+  @include breakpoint(large) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .card {
   background: var(--dark-card);
   color: var(--dark-text1);
-  width: rem(255);
   text-align: center;
   padding: rem(25);
   border-radius: rem(5);
