@@ -7,7 +7,9 @@ const localGetColor = localStorage.getItem('colorMode');
 if (localGetColor) {
   localGetColor === 'dark' ? setDarkMode() : setLightMode();
 } else {
-  setDarkMode();
+  window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? setDarkMode()
+    : setLightMode();
 }
 
 for (let btn of radioBtns) {
