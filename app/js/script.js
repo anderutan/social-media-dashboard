@@ -12,6 +12,16 @@ if (localGetColor) {
     : setLightMode();
 }
 
+window
+  .matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', (event) => {
+    if (event.matches) {
+      setDarkMode();
+    } else {
+      setLightMode();
+    }
+  });
+
 for (let btn of radioBtns) {
   btn.addEventListener('click', () => {
     if (darkToggle.checked) {
